@@ -1,0 +1,47 @@
+
+---
+title: "Insurance & Life Cover Likelihood Across Europe"
+author: "Auto-generated"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    theme: flatly
+---
+
+## Overview
+
+This report explores synthetic KPIs and models the likelihood of purchasing life cover across European countries.
+It demonstrates an end-to-end workflow: EDA, unsupervised clustering, and supervised classification.
+Python and R are both used in this project.
+
+## Data
+
+- `eu_kpis_synthetic.csv` contains country-level KPIs:
+  - Purchasing power index
+  - Health coverage (%)
+  - Aged 65+ population (%)
+  - GDP per capita (USD)
+  - Synthetic life-cover likelihood (0–1) and a binary label
+
+## Methods
+
+- **Clustering**: KMeans (k=3) on standardized KPIs, then 2D PCA for visualization.
+- **Classification**: Logistic Regression and Random Forest using KPIs + cluster ID.
+- **Metrics**: Precision/Recall/F1, ROC-AUC.
+
+## Results Summary (to fill in after running Python pipeline)
+
+- See `report/metrics.json` and `report/country_summary.csv`.
+- Interactive plots in `plots/`:
+  - Pairwise KPI scatter matrix (`pairwise_scatter.html`)
+  - Correlation heatmap (`corr_heatmap.html`)
+  - PCA clusters (`pca_clusters.html` / `r_pca_clusters.html`)
+  - RF feature importance (`rf_feature_importance.html`)
+  - ROC curve (`roc_random_forest.html`)
+
+## Interpretation
+
+Clusters group countries with similar economic and demographic profiles.
+Classification uses those patterns to predict life cover purchasing likelihood.
+In production, replace synthetic KPIs with Eurostat/World Bank indicators for real analysis.
